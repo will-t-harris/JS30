@@ -75,7 +75,7 @@
     function setDate() { // date function
         const now = new Date(); // capture current time with Date() constructor, which returns a Date object
         const seconds = now.getSeconds(); // capture current minute's second count
-        const secondsDegrees = ((seconds / 60) * 360); // convert current seconds value into a degree value between 0 and 360
+        const secondsDegrees = ((seconds / 60) * 360) + 90; // convert current seconds value into a degree value between 0 and 360, add 90 to offset the 90deg rotation in CSS
         secondHand.style.transform = `rotate(${secondsDegrees}deg)`; //set rotation to the current secondsDegrees
         console.log(seconds);
     }
