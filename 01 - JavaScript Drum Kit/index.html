@@ -65,8 +65,11 @@
         if(!audio) return; // stop the function from running if a non-included key is pressed
         audio.currentTime = 0; // reset sound to start
         audio.play();
-        console.log(key);
+        key.classList.add('playing');
     });
+
+    const keys = document.querySelectorAll('.key');
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 </script>
 
