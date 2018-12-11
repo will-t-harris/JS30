@@ -71,14 +71,16 @@
   </style>
 
   <script>
-
-    function setDate() {
-        const now = new Date();
-        const seconds = now.getSeconds();
+    const secondHand = document.querySelector('.second-hand'); // select .second-hand div
+    function setDate() { // date function
+        const now = new Date(); // capture current time with Date() constructor, which returns a Date object
+        const seconds = now.getSeconds(); // capture current minute's second count
+        const secondsDegrees = ((seconds / 60) * 360); // convert current seconds value into a degree value between 0 and 360
+        secondHand.style.transform = `rotate(${secondsDegrees}deg)`; //set rotation to the current secondsDegrees
         console.log(seconds);
     }
 
-    setInterval(setDate, 1000);
+    setInterval(setDate, 1000); // interval that date function updates
   </script>
 </body>
 </html>
