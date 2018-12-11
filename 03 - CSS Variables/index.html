@@ -64,10 +64,13 @@
       const inputs = document.querySelectorAll('.controls input'); // select each of the control inputs
 
       function handleUpdate() { // function for defining update behavior -- linking sliders/color picker to the image for changes
-          console.log(this.value);
+        const suffix = this.dataset.sizing || ''; // capture the suffix that needes to be appended to new value -- px for spacing and blur, nothing for color
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix); // set the style attribute to whatever the user selected, then append the suffix
       }
 
       inputs.forEach(input => input.addEventListener('change', handleUpdate)); // set up listeners to fire handleUpdate when inputs are changed
+      inputs.forEach(input => input.addEventListener('mousemove', handleUpdate)); // set up listeners to fire handleUpdate when mouse is moved
+
   </script>
 
 </body>
