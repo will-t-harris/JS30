@@ -60,8 +60,12 @@
 <script>
 
     window.addEventListener('keydown', function(e) {
-        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`); // captures the element related to the pressed key(captures the event and stores it in audio?)
+        const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
         if(!audio) return; // stop the function from running if a non-included key is pressed
+        audio.currentTime = 0; // reset sound to start
+        audio.play();
+        console.log(key);
     });
 
 </script>
