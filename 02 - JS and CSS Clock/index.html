@@ -64,6 +64,8 @@
       top: 50%;
       transform-origin: 100%; /* changes pivot point from center of hand (50%, default value) to right edge of hand */
       transform: rotate(90deg); /* rotate hands so they start at '12 o'clock' position */
+      transition: all, 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
     }
 
   </style>
