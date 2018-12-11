@@ -61,6 +61,13 @@
   </style>
 
   <script>
+      const inputs = document.querySelectorAll('.controls input'); // select each of the control inputs
+
+      function handleUpdate() { // function for defining update behavior -- linking sliders/color picker to the image for changes
+          console.log(this.value);
+      }
+
+      inputs.forEach(input => input.addEventListener('change', handleUpdate)); // set up listeners to fire handleUpdate when inputs are changed
   </script>
 
 </body>
