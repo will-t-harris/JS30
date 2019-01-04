@@ -28,6 +28,7 @@
         ctx.moveTo(lastX, lastY); // where the line starts
         ctx.lineTo(e.offsetX, e.offsetY); // offsetX & offsetY are properties of the e object, passed in here as where the line should end
         ctx.stroke(); // actually make the visual stroke
+        [lastX, lastY] = [e.offsetX, e.offsetY];
     }
 
     canvas.addEventListener('mousemove', draw);
