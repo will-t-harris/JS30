@@ -25,9 +25,9 @@
         if(!isDrawing) return; // stop the function from running when mouse is not down
         console.log(e);
         ctx.beginPath();
-        ctx.moveTo(lastX, lastY);
-        ctx.lineTo(e.offsetX, e.offsetY); // offsetX & offsetY are properties of the e object
-        ctx.stroke();
+        ctx.moveTo(lastX, lastY); // where the line starts
+        ctx.lineTo(e.offsetX, e.offsetY); // offsetX & offsetY are properties of the e object, passed in here as where the line should end
+        ctx.stroke(); // actually make the visual stroke
     }
 
     canvas.addEventListener('mousemove', draw);
