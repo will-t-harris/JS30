@@ -65,6 +65,13 @@
     console.count('Will');
 
     // timing
+    console.time('fetching data');
+    fetch('https://api.github.com/users/wtharris89')
+      .then(data => data.json())
+      .then(data => {
+        console.timeEnd('fetching data');
+        console.log(data);
+      })
 
   </script>
 </body>
