@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JS + CSS Clock</title>
+</head>
+<body>
+
+
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+      </div>
+    </div>
+
+
+  <style>
+    html {
+      background: #018DED url(http://unsplash.it/1500/1000?image=881&blur=50);
+      background-size: cover;
+      font-family: 'helvetica neue';
+      text-align: center;
+      font-size: 10px;
+    }
+
+    body {
+      margin: 0;
+      font-size: 2rem;
+      display: flex;
+      flex: 1;
+      min-height: 100vh;
+      align-items: center;
+    }
+
+    .clock {
+      width: 30rem;
+      height: 30rem;
+      border: 20px solid white;
+      border-radius: 50%;
+      margin: 50px auto;
+      position: relative;
+      padding: 2rem;
+      box-shadow:
+        0 0 0 4px rgba(0,0,0,0.1),
+        inset 0 0 0 3px #EFEFEF,
+        inset 0 0 10px black,
+        0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .clock-face {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform: translateY(-3px); /* account for the height of the clock hands */
+    }
+
+    .hand {
+      width: 50%;
+      height: 6px;
+      background: black;
+      position: absolute;
+      top: 50%;
+      transform-origin: 100%; /* changes pivot point from center of hand (50%, default value) to right edge of hand */
+      transform: rotate(90deg); /* rotate hands so they start at '12 o'clock' position */
+      transition: all, 0.05s;
+      transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+    }
+
+  </style>
+
+  <script>
+    const secondHand = document.querySelector('.second-hand'); // select each hand's div and store in variables
+    const minuteHand = document.querySelector('.min-hand'); 
+    const hourHand = document.querySelector('.hour-hand'); 
+
+    function setDate() { // date function
+        const now = new Date(); // capture current time with Date() constructor, which returns a Date object
+
+        const seconds = now.getSeconds(); // capture current minute's second count
+        const secondsDegrees = ((seconds / 60) * 360) + 90; // convert current seconds value into a degree value between 0 and 360, add 90 to offset the 90deg rotation in CSS
+        secondHand.style.transform = `rotate(${secondsDegrees}deg)`; //set rotation to the current secondsDegrees
+
+        const minutes = now.getMinutes(); // capture current minute
+        const minutesDegrees = ((minutes / 60) * 360) + 90; // convert to degree value between 0 and 360
+        minuteHand.style.transform = `rotate(${minutesDegrees}deg)`; // set rotation
+
+        const hours = now.getHours(); // capture current hour
+        const hoursDegrees = ((hours / 12) * 360) + 90; // convert to degree value (divide by 12 here -- hour hand)
+        hourHand.style.transform = `rotate(${hoursDegrees}deg)`; // set rotation
+    }
+
+    setInterval(setDate, 1000); // interval that date function updates
+  </script>
+</body>
+</html>
+
