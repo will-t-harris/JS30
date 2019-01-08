@@ -1,2 +1,3 @@
 # JS30-Course-Work
-JS30 exercises
+
+Exercises from javascript30.com
