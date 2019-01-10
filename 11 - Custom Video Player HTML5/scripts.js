@@ -7,6 +7,6 @@ const toggle = player.querySelector('toggle');
 const skipButtons = player.querySelector('[data-skip]');
 const ranges = player.querySelector('.player__slider');
 
-// Build out functionsSpeed: 1.5×
+// Build out functions
 
 // Hook up the event listeners
