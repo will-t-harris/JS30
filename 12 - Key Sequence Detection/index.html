@@ -7,6 +7,13 @@
 </head>
 <body>
 <script>
+  const pressed = [];
+  const secretCoe = 'willharris';
+  window.addEventListener('keyup', (e) => {
+    console.log(e.key);
+    pressed.push(e.key);
+    console.log(pressed);
+  });
 </script>
 </body>
 </html>
