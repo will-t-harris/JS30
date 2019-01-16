@@ -61,7 +61,10 @@
     const sliderImages = document.querySelectorAll('.slide-in');
 
     function checkSlide(e) {
-        console.log(e);
+        sliderImages.forEach(sliderImage => {
+            const slideInAt = (window.scrollY + window.innerHeight); // set up slideInAt to give the bottom border of the window in pixels
+            console.log(slideInAt);
+        });
     }
 
     window.addEventListener('scroll', debounce(checkSlide));
