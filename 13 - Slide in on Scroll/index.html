@@ -62,8 +62,8 @@
 
     function checkSlide(e) {
         sliderImages.forEach(sliderImage => {
-            const slideInAt = (window.scrollY + window.innerHeight); // set up slideInAt to give the bottom border of the window in pixels
-            console.log(slideInAt);
+            const slideInAt = (window.scrollY + window.innerHeight) - sliderImage.height / 2; // set up slideInAt to give the halfway point of the image, to initiate animation.  value in pixels
+            const imageBottom = sliderImage.offsetTop + sliderImage.height;
         });
     }
 
