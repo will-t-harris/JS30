@@ -55,8 +55,12 @@
   }
 
   function toggleDone(e) {
-    if(!e.target.matches('input')) return; // skip this unless it's an input
-    console.log(e.target);
+    if (!e.target.matches('input')) return; // skip this unless it's an input -- event delegation
+    const el = e.target;
+    const index = el.dataset.index; // .dataset.index is accessible because we set up the inputs with the data-index property
+    items[index].done = !items[index].done; // deals with alternating true and false
+    localStorage.setItem('items', JSON.stringify(items));
+    populateList(items, itemsList);
   }
 
   addItems.addEventListener('submit',addItem);
