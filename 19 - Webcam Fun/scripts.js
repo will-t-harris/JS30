@@ -22,8 +22,22 @@ function paintToCanvas() {
     canvas.height = height;
 
     return setInterval(() => {
-        ctx.drawImage(video, 0, 0, width, height);
+        ctx.drawImage(video, 0, 0, width, height); // call drawImage on canvas context (ctx)
     }, 16);
 }
 
+function takePhoto() {
+    snap.currentTime = 0;
+    snap.play(); // play the sound
+
+    const data = canvas.toDataURL('image/jpeg'); // take the data out of the canvas
+    const link = document.createElement('a');
+    link.href = data;
+    link.setAttribute('download', 'handsome'); // handsome is the file name when download occurs
+    link.innerHTML = `<img src="${data}" alt="Handsome Man" />`;
+    strip.insertBefore(link, strip.firstChild);
+}
+
 getVideo();
+
+video.addEventListener('canplay', paintToCanvas); // canplay event is emitted when video.play is called
