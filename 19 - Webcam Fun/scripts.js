@@ -7,13 +7,18 @@ const snap = document.querySelector('.snap');
 function getVideo() {
     navigator.mediaDevices.getUserMedia({video: true, audio: false})
         .then(localMediaStream => {
-            console.log(localMediaStream);
             video.srcObject = localMediaStream;
             video.play();
         })
         .catch(err => {
             console.error(`OH NO!!!`, err);
-        })
+        });
+}
+
+function paintToCanvas() {
+    const width = video.videoWidth;
+    const height = video.videoHeight;
+    console.log(width, height);
 }
 
 getVideo();
