@@ -12,6 +12,13 @@
 <script>
   window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
+  const recognition = new SpeechRecognition();
+  recognition.interimResults = true; // allows us to populate while talking, otherwise it would only update when we finish talking
+
+  let p = document.createElement('p'); // create p element
+  const words = document.querySelector('.words'); // store words div in var
+  words.appendChild(p); // add p elements into words div
+
 
 </script>
 
